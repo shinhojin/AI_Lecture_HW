@@ -10,6 +10,7 @@
 ## How to Execute the code
 
 '''python
+
     !pip install timm==0.6.11
     !git clone https://github.com/sail-sg/metaformer.git
     !wget https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/cat.jpg
