@@ -47,7 +47,7 @@
 ```python
 
     !pip install timm==0.6.11
-    !git clone https://github.com/sail-sg/metaformer.git
+    !git clone https://github.com/shinhojin/AI_Lecture_HW.git
     !wget https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/cat.jpg
     
 ```
