@@ -9,7 +9,7 @@
 
 ## How to Execute the code
 
-'''python
+₩₩₩python
 
     !pip install timm==0.6.11
     !git clone https://github.com/sail-sg/metaformer.git
@@ -29,7 +29,7 @@
     pred = model(input_image) // 모델 학습 함수
     print(f'Prediction: {imagenet_classes[int(pred.argmax())]}.') # 추론 결과 출력
     image # 이미지 출력
-'''
+₩₩₩
 
 ## Model Pesudo Code
 
