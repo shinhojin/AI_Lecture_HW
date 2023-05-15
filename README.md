@@ -14,7 +14,7 @@
  
  $$ X'' = X' + \sigma(Norm_2(X')W_1)W_2 $$
  
- $$ X $$ = token sequence $$ N $$ = length, $$ C $$ = channel dimension, $$ Norm() $$ = normalization, $$ \sigma $$ = activation function, $$ W $$ = learnable parameter in channel MLP
+ $$ X = token sequence N = length, C = channel dimension, Norm() = normalization, \sigma = activation function, W = learnable parameter in channel MLP $$
  
  여기서 말하는 **메타 학습 (MetaLearning)** 이란 적은 양의 데이터와 주어진 환경만으로 스스로 학습하고, 학습한 정보와 알고리즘을 새로운 문제에 적용하여 해결하는 학습 방식을 의미합니다.
  
