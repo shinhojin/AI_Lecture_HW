@@ -73,8 +73,11 @@ output_norm: 분류기 헤드 이전의 norm
 head_fn: 분류 헤드
   
 **Procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
+    
     # classes와 stages 값을 초기화
+    
     self.num_classes '&larr;' num_classes
+    
     self.num_stages '&larr;' len(depths)
     
     # downsample layers를 초기화
