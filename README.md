@@ -72,6 +72,8 @@
     model.eval()
     transform = create_transform(input_size=224, crop_pct=model.default_cfg['crop_pct']) # transformer 생성
     image = Image.open('../cat.jpg')
+    # 골든 리트리버 사진 아무거나 colab에 저장한 후에 진행하면 다른 결과를 확인할 수 있습니다.
+    # image = Image.open('../dog.jpeg)
     input_image = transform(image).unsqueeze(0)
 
 
