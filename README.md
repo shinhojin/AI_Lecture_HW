@@ -76,9 +76,9 @@ ___Require: Arguments___
     
     # classes와 stages 값을 초기화
     
-    self.num_classes '&larr;' num_classes
+    self.num_classes <- num_classes
     
-    self.num_stages '&larr;' len(depths)
+    self.num_stages <- len(depths)
     
     # downsample layers를 초기화
     self.downsample_layers '&larr;' nn.ModuleList([downsample_layers(in_chans, dims[i]) for i in range(self.num_stages)])
