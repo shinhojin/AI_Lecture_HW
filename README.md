@@ -14,7 +14,7 @@
  
  $$ X'' = X' + \sigma(Norm_2(X')W_1)W_2 $$
  
- $$ X = token \ sequence N = length, C = channel \ dimension, Norm() = normalization, \sigma = activation \ function, W = learnable \ parameter \ in \ channel \ MLP $$
+ $$ X = token \ sequence \ N = length, C = channel \ dimension, Norm() = normalization, \sigma = activation \ function, W = learnable \ parameter \ in \ channel \ MLP $$
  
  여기서 말하는 **메타 학습 (MetaLearning)** 이란 적은 양의 데이터와 주어진 환경만으로 스스로 학습하고, 학습한 정보와 알고리즘을 새로운 문제에 적용하여 해결하는 학습 방식을 의미합니다.
  
@@ -42,19 +42,29 @@
 
 **dependency**는 Google Colab 환경에서 아래 코드를 진행하면 문제없이 작동합니다.
 
+아래 코드에서 **나누어져 있는 부분은 각각 따로** 순서대로 진행해야 합니다.
+
 ```python
 
     !pip install timm==0.6.11
     !git clone https://github.com/sail-sg/metaformer.git
     !wget https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/cat.jpg
     
+```
+
+```python
+
     cd /content/metaformer
-    
+
+```
+
+```python
+
     import metaformer_baselines # MetaFormer 모델 가져오기
     from PIL import Image
     from timm.data import create_transform
     model = metaformer_baselines.caformer_s18(pretrained=True) # 다른 모델을 바꿔서 실험 가능
-    # 다른 모델 설정 예시
+    # 다른 모델 설정 예시 (다른 모델을 사용하면 Prediction 결과에 결과창이 달라지는 것을 확인할 수 있습니다.)
     # model = metaformer_baselines.indetityformer_s24(pretrained=True)
     # model = metaformer_baselines.randformer_s36(pretrained=True)
     # model = metaformer_baselines.poolformerv2_m48(pretrained=True)
@@ -64,9 +74,15 @@
     image = Image.open('../cat.jpg')
     input_image = transform(image).unsqueeze(0)
 
+
+```
+
+```python
+
     pred = model(input_image) # 예측 함수
     print(f'Prediction: {imagenet_classes[int(pred.argmax())]}.') # 추론 결과 출력
     image # 이미지 출력
+
 ```
 
 ## Model Pesudo Code
