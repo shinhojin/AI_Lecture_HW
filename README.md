@@ -28,9 +28,7 @@
  
  이를 통해 기존 ReLU보다 분포 편향에 덜 민감한 활성화 함수가 생성됩니다.
  
- $$
- StarReLU(x) = (ReLU(x))^2 - E((ReLU(x))^2)\over \sqrt Var((ReLU(x))^2 = (ReLU(x))^2 - 0.5\over \sqrt 1.25
- $$
+ $StarReLU(x) = (ReLU(x))^2 - E((ReLU(x))^2)\over \sqrt Var((ReLU(x))^2 = (ReLU(x))^2 - 0.5\over \sqrt 1.25$
 
 ## How to Execute the code
 
