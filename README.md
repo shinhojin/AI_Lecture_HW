@@ -6,7 +6,31 @@
 
 ## Model Explanation
 
-
+ **MetaFormer**는 기존 Transformer를 확장하고 성능 향상시키기 위해 메타학습에 기반한 딥러닝 모델입니다.
+ 
+ MetaFormer는 Transformer의 추상화된 구조입니다.
+ 
+ 여기서 말하는 **메타 학습 (MetaLearning)** 이란 적은 양의 데이터와 주어진 환경만으로 스스로 학습하고, 학습한 정보와 알고리즘을 새로운 문제에 적용하여 해결하는 학습 방식을 의미합니다.
+ 
+ MetaFormer를 적용한 4가지 **(IdentityFormer, RandFormer, ConvFormer, CAFormer)** 를 보여줍니다.
+ 
+ IdentityFormer를 통해 MetaFormer 성능의 하한선을 보여주고, RandFormer를 통해 보편적으로 활용할 수 있음을 보여줍니다.
+ 
+ 본 MetaFormer에서 활성화 함수로 **StarReLU**를 제안합니다.
+ 
+ 기존에 있는 활성화 함수인 ReLU는 1 FLOPs를 보이며, 이를 개선한 GELU는 성능이 좋아졌지만 14 FLOPs로 비용이 높아졌습니다.
+ 
+ 이를 다시 개선한 Squared ReLU는 2 FLOPs를 보여줍니다.
+ 
+ MetaFormer에서 사용한 StarReLU는 4 FLOPs를 가지면서 기존 활성화 함수들보다 높은 성능을 보여줍니다.
+ 
+ StarReLU는 입력에 대한 분포 편향을 제거하는 구조를 가지며, 입력의 제곱을 취한 다음 입력을 제곱의 제곱근으로 나누어 수행됩니다.
+ 
+ 이를 통해 기존 ReLU보다 분포 편향에 덜 민감한 활성화 함수가 생성됩니다.
+ 
+ $$
+ StarReLU(x) = (ReLU(x))^2 - E((ReLU(x))^2)\over \sqrt Var((ReLU(x))^2 = (ReLU(x))^2 - 0.5\over \sqrt 1.25
+ $$
 
 ## How to Execute the code
 
@@ -80,7 +104,7 @@ ___Require: Arguments___
   
 **Procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
     
-   # classes와 stages 값을 초기화
+    # classes와 stages 값을 초기화
     self.num_classes <- num_classes
     self.num_stages <- len(depths)
     
@@ -121,7 +145,7 @@ ___Require: Arguments___
             ) for j in range(depths[i])]
         )
         self.stages.append(stage)
-    **end for**
+    end for
     
     # norm layer를 초기화
     self.norm <- output_norm(dims[-1])
