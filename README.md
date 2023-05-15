@@ -130,20 +130,23 @@ ___Require: Arguments___
     # weights를 초기화
     init_weights()
     
-  **procedure** _init_weights_
+  **Procedure** _init_weights_
+  
     for m in self.modules():
         if isinstance(m, (nn.Conv2d, nn.Linear)):
             trunc_normal_(m.weight, std '&larr;' .02)
             if m.bias is not None:
                 nn.init.constant_(m.bias, 0)
                 
-  **procedure** _forward_features_
+  **Procedure** _forward_features_
+  
     for i in range(self.num_stages):
         x '&larr;' self.downsample_layers[i](x)
         x '&larr;' self.stages[i](x)
     return self.norm(x.mean[1, 2]))
     
-  **procedure** _forward_
+  **Procedure** _forward_
+  
     x '&larr;' self.forward_features(x)
     x '&larr;' self.head(x)
     return x
