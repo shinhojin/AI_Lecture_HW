@@ -9,7 +9,7 @@
 
 ## How to Execute the code
 
-₩₩₩python
+```python
 
     !pip install timm==0.6.11
     !git clone https://github.com/sail-sg/metaformer.git
@@ -20,16 +20,16 @@
     import metaformer_baselines # MetaFormer 모델 가져오기
     from PIL import Image
     from timm.data import create_transform
-    model = metaformer_baselines.caformer_s18(pretrained=True) # 다른 모델을 바꿔서 실험 가능
+    model = metaformer_baselines.caformer_s18(pretrained=True) **# 다른 모델을 바꿔서 실험 가능**
     model.eval()
     transform = create_transform(input_size=224, crop_pct=model.default_cfg['crop_pct'])
     image = Image.open('../cat.jpg')
     input_image = transform(image).unsqueeze(0)
 
-    pred = model(input_image) // 모델 학습 함수
-    print(f'Prediction: {imagenet_classes[int(pred.argmax())]}.') # 추론 결과 출력
-    image # 이미지 출력
-₩₩₩
+    pred = model(input_image) **# 모델 학습 함수**
+    print(f'Prediction: {imagenet_classes[int(pred.argmax())]}.') **# 추론 결과 출력**
+    image **# 이미지 출력**
+```
 
 ## Model Pesudo Code
 
