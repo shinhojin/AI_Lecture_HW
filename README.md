@@ -1161,17 +1161,8 @@ ___Require: Arguments___
     # stages를 초기화
     self.stages <- nn.ModuleList()
     for i in range(self.num_stages):
-        stage <- nn.Sequential(
-            *[MetaFormerBlock(dim <- dims[i],
-            token_mixer <- token_mixers[i],
-            mlp <- mlps[i],
-            norm_layer <- norm_layers[i],
-            drop_path <- dp_rates[i + j],
-            layer_scale_init_value <- layer_scale_init_values[i],
-            res_scale_init_value <- res_scale_init_values[i],
-            ) for j in range(depths[i])]
-        )
-        self.stages.append(stage)
+        Sequential 모델을 생성
+        입력값으로 레이어 리스트를 받고, 출력으로 레이어 목록을 연결한 모델을 생성
     end for
     
     # norm layer를 초기화
@@ -1188,6 +1179,7 @@ ___Require: Arguments___
     
   **Procedure** _init_weights_
   
+    # 신경만 모델의 가중치를 초기화
     for m in self.modules():
         if isinstance(m, (nn.Conv2d, nn.Linear)):
             trunc_normal_(m.weight, std '&larr;' .02)
@@ -1197,15 +1189,14 @@ ___Require: Arguments___
   **Procedure** _forward_features_
   
     for i in range(self.num_stages):
-        x <- self.downsample_layers[i](x)
-        x <- self.stages[i](x)
+        stages 리스트의 각 요소인 MetaFormerBlock 클래스 인스턴스를 순차적으로 실행
+        이미지 분류를 위해 순차적으로 연결된 Transformer 블록을 구현
     return self.norm(x.mean[1, 2]))
     
   **Procedure** _forward_
   
-    x <- self.forward_features(x)
-    x <- self.head(x)
-    return x
+    forward_features 함수와 head 함수를 호출
+    # head 함수는 분류기를 구현
 ***
 
 ## Code details
