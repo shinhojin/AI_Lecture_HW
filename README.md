@@ -79,51 +79,51 @@ ___Require: Arguments___
     self.num_stages <- len(depths)
     
     # downsample layers를 초기화
-    self.downsample_layers '&larr;' nn.ModuleList([downsample_layers(in_chans, dims[i]) for i in range(self.num_stages)])
+    self.downsample_layers <- nn.ModuleList([downsample_layers(in_chans, dims[i]) for i in range(self.num_stages)])
     
     # token mixers를 초기화
-    self.token_mixers '&larr;' nn.ModuleList([token_mixers] * self.num_stages)
+    self.token_mixers <- nn.ModuleList([token_mixers] * self.num_stages)
     
     # MLPs를 초기화
-    self.mlps '&larr;' nn.ModuleList([mlps] * self.num_stages)
+    self.mlps <- nn.ModuleList([mlps] * self.num_stages)
     
     # norm layers를 초기화
-    self.norm_layers '&larr;' nn.ModuleList([norm_layers] * self.num_stages)
+    self.norm_layers <- nn.ModuleList([norm_layers] * self.num_stages)
     
     # drop path rates를 초기화
-    self.drop_path_rates '&larr;' [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
+    self.drop_path_rates <- [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
     
     # layer scale 초기 값을 설정
-    self.layer_scale_init_values '&larr;' [layer_scale_init_values] * self.num_stages
+    self.layer_scale_init_values <- [layer_scale_init_values] * self.num_stages
     
     # res scale 초기 값을 설정
-    self.res_scale_init_values '&larr;' [res_scale_init_values] * self.num_stages
+    self.res_scale_init_values <- [res_scale_init_values] * self.num_stages
     
-    cur '&larr;' 0
+    cur <- 0
     
     # stages를 초기화
-    self.stages '&larr;' nn.ModuleList()
+    self.stages <- nn.ModuleList()
     for i in range(self.num_stages):
-        stage '&larr;' nn.Sequential(
-            *[MetaFormerBlock(dim '&larr;' dims[i],
-            token_mixer '&larr;' token_mixers[i],
-            mlp '&larr;' mlps[i],
-            norm_layer '&larr;' norm_layers[i],
-            drop_path '&larr;' dp_rates[i + j],
-            layer_scale_init_value '&larr;' layer_scale_init_values[i],
-            res_scale_init_value '&larr;' res_scale_init_values[i],
+        stage <- nn.Sequential(
+            *[MetaFormerBlock(dim <- dims[i],
+            token_mixer <- token_mixers[i],
+            mlp <- mlps[i],
+            norm_layer <- norm_layers[i],
+            drop_path <- dp_rates[i + j],
+            layer_scale_init_value <- layer_scale_init_values[i],
+            res_scale_init_value <- res_scale_init_values[i],
             ) for j in range(depths[i])]
         )
         self.stages.append(stage)
     
     # norm layer를 초기화
-    self.norm '&larr;' output_norm(dims[-1])
+    self.norm <- output_norm(dims[-1])
     
     # head를 초기화
     if head_dropout > 0.0:
-        self.head '&larr;' head_fn(dims[-1], num_classes, head_dropout '&larr' head_dropout)
+        self.head <- head_fn(dims[-1], num_classes, head_dropout '&larr' head_dropout)
     else:
-        self.head '&larr;' head_fn(dims[-1], num_classes)
+        self.head <- head_fn(dims[-1], num_classes)
       
     # weights를 초기화
     init_weights()
@@ -139,14 +139,14 @@ ___Require: Arguments___
   **Procedure** _forward_features_
   
     for i in range(self.num_stages):
-        x '&larr;' self.downsample_layers[i](x)
-        x '&larr;' self.stages[i](x)
+        x <- self.downsample_layers[i](x)
+        x <- self.stages[i](x)
     return self.norm(x.mean[1, 2]))
     
   **Procedure** _forward_
   
-    x '&larr;' self.forward_features(x)
-    x '&larr;' self.head(x)
+    x <- self.forward_features(x)
+    x <- self.head(x)
     return x
 ***
 
