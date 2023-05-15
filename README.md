@@ -10,6 +10,7 @@
 ## How to Execute the code
 
 해당 코드는 **Google Colab** 환경에서 진행하였습니다.
+
 **dependency**는 Google Colab 환경에서 아래 코드를 진행하면 문제없이 작동합니다.
 
 ```python
