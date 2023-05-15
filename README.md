@@ -36,6 +36,26 @@
  
  $$ StarReLU(x) = \frac{(ReLU(x))^2 - E((ReLU(x))^2)}{\sqrt{Var((ReLU(x))^2}} = \frac{(ReLU(x))^2 - 0.5}{\sqrt{1.25}} $$
 
+## Requirements
+
+ torch>=1.7.0; torchvision>=0.8.0; pyyaml; timm (pip install timm==0.6.11)
+
+ 데이터 준비 : 다음 폴더 구조의 ImageNet, 이 [Script](https://gist.github.com/BIGBALLON/8a71d225eff18d88e469e6ea9b39cef4)로 ImageNet을 추출할 수 있습니다.
+ 
+    │imagenet/
+    ├──train/
+    │  ├── n01440764
+    │  │   ├── n01440764_10026.JPEG
+    │  │   ├── n01440764_10027.JPEG
+    │  │   ├── ......
+    │  ├── ......
+    ├──val/
+    │  ├── n01440764
+    │  │   ├── ILSVRC2012_val_00000293.JPEG
+    │  │   ├── ILSVRC2012_val_00002138.JPEG
+    │  │   ├── ......
+    │  ├── ......
+
 ## How to Execute the code
 
 해당 코드는 **Google Colab** 환경에서 진행하였습니다.
