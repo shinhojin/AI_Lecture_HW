@@ -44,33 +44,33 @@
 ***
 ___Require: Arguments___
 
-*in_chans (int): 입력 이미지 채널 수
+* in_chans (int): 입력 이미지 채널 수
 
-*num_classes(int): 분류 헤드의 클래스 수
+* num_classes(int): 분류 헤드의 클래스 수
 
-*depths(list or tuple): 각 단계의 블록 수
+* depths(list or tuple): 각 단계의 블록 수
 
-*dims(int): 각 단계의 기능 차원
+* dims(int): 각 단계의 기능 차원
 
-*downsample_layers: (list or tuple): 각 stage 전에 downsampling layers
+* downsample_layers: (list or tuple): 각 stage 전에 downsampling layers
 
-*token_mixers (list, tuple or token_fcn): 각 단계에 대한 토큰 믹서
+* token_mixers (list, tuple or token_fcn): 각 단계에 대한 토큰 믹서
 
-*mlps(list, tuple or mlp_fcn): 각 단계에 대한 Mlp
+* mlps(list, tuple or mlp_fcn): 각 단계에 대한 Mlp
 
-*norm_layers (list, tuple or norm_fcn): 각 단계에 대한 norm layers
+* norm_layers (list, tuple or norm_fcn): 각 단계에 대한 norm layers
 
-*drop_path_rate (float): 확률적 깊이 비율
+* drop_path_rate (float): 확률적 깊이 비율
 
-*head_dropout(float): MLP 분류자에 대한 드롭아웃
+* head_dropout(float): MLP 분류자에 대한 드롭아웃
 
-*layer_scale_init_values (list, tuple, float or None): 레이어 스케일의 초기 값
+* layer_scale_init_values (list, tuple, float or None): 레이어 스케일의 초기 값
 
-*res_scale_init_values(list, tuple, float or None): 레이어 스케일의 초기 값
+* res_scale_init_values(list, tuple, float or None): 레이어 스케일의 초기 값
 
-*output_norm: 분류기 헤드 이전의 norm
+* output_norm: 분류기 헤드 이전의 norm
 
-*head_fn: 분류 헤드
+* head_fn: 분류 헤드
   
 **Procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
     
