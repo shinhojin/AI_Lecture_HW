@@ -77,7 +77,8 @@
 
 ```
 
-```
+```python
+
    #@title ImageNet classes
 imagenet_classes = {0: 'tench, Tinca tinca',
  1: 'goldfish, Carassius auratus',
@@ -1080,7 +1081,7 @@ imagenet_classes = {0: 'tench, Tinca tinca',
  998: 'ear, spike, capitulum',
  999: 'toilet tissue, toilet paper, bathroom tissue'}
 
-```python
+```
 
 ```python
 
