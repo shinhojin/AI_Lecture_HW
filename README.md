@@ -7,6 +7,7 @@
 ## Model Explanation
 
 
+
 ## How to Execute the code
 
 해당 코드는 **Google Colab** 환경에서 진행하였습니다.
@@ -25,6 +26,11 @@
     from PIL import Image
     from timm.data import create_transform
     model = metaformer_baselines.caformer_s18(pretrained=True) # 다른 모델을 바꿔서 실험 가능
+    # 다른 모델 설정 예시
+    # model = metaformer_baselines.indetityformer_s24(pretrained=True)
+    # model = metaformer_baselines.randformer_s36(pretrained=True)
+    # model = metaformer_baselines.poolformerv2_m48(pretrained=True)
+    # model = metaformer_baselines.convformer_s18_384_in21ft1k(pretrained=True)
     model.eval()
     transform = create_transform(input_size=224, crop_pct=model.default_cfg['crop_pct']) # transformer 생성
     image = Image.open('../cat.jpg')
@@ -74,7 +80,7 @@ ___Require: Arguments___
   
 **Procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
     
-    # classes와 stages 값을 초기화
+   # classes와 stages 값을 초기화
     self.num_classes <- num_classes
     self.num_stages <- len(depths)
     
@@ -115,6 +121,7 @@ ___Require: Arguments___
             ) for j in range(depths[i])]
         )
         self.stages.append(stage)
+    **end for**
     
     # norm layer를 초기화
     self.norm <- output_norm(dims[-1])
