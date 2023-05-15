@@ -42,6 +42,7 @@
 **MetaFormer**: Model Pesudo Code
 ***
 ___Require: Arguments___
+
   in_chans (int): 입력 이미지 채널 수
   num_classes(int): 분류 헤드의 클래스 수
   depths(list or tuple): 각 단계의 블록 수
@@ -59,55 +60,55 @@ ___Require: Arguments___
   
   **procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
     # classes와 stages 값을 초기화
-    self.num_classes '&larr' num_classes
-    self.num_stages '&larr' len(depths)
+    self.num_classes '&larr;' num_classes
+    self.num_stages '&larr;' len(depths)
     
     # downsample layers를 초기화
-    self.downsample_layers '&larr' nn.ModuleList([downsample_layers(in_chans, dims[i]) for i in range(self.num_stages)])
+    self.downsample_layers '&larr;' nn.ModuleList([downsample_layers(in_chans, dims[i]) for i in range(self.num_stages)])
     
     # token mixers를 초기화
-    self.token_mixers '&larr' nn.ModuleList([token_mixers] * self.num_stages)
+    self.token_mixers '&larr;' nn.ModuleList([token_mixers] * self.num_stages)
     
     # MLPs를 초기화
-    self.mlps '&larr' nn.ModuleList([mlps] * self.num_stages)
+    self.mlps '&larr;' nn.ModuleList([mlps] * self.num_stages)
     
     # norm layers를 초기화
-    self.norm_layers '&larr' nn.ModuleList([norm_layers] * self.num_stages)
+    self.norm_layers '&larr;' nn.ModuleList([norm_layers] * self.num_stages)
     
     # drop path rates를 초기화
-    self.drop_path_rates '&larr' [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
+    self.drop_path_rates '&larr;' [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
     
     # layer scale 초기 값을 설정
-    self.layer_scale_init_values '&larr' [layer_scale_init_values] * self.num_stages
+    self.layer_scale_init_values '&larr;' [layer_scale_init_values] * self.num_stages
     
     # res scale 초기 값을 설정
-    self.res_scale_init_values '&larr' [res_scale_init_values] * self.num_stages
+    self.res_scale_init_values '&larr;' [res_scale_init_values] * self.num_stages
     
-    cur '&larr' 0
+    cur '&larr;' 0
     
     # stages를 초기화
-    self.stages '&larr' nn.ModuleList()
+    self.stages '&larr;' nn.ModuleList()
     for i in range(self.num_stages):
-        stage '&larr' nn.Sequential(
-            *[MetaFormerBlock(dim '&larr' dims[i],
-            token_mixer '&larr' token_mixers[i],
-            mlp '&larr' mlps[i],
-            norm_layer '&larr' norm_layers[i],
-            drop_path '&larr' dp_rates[i + j],
-            layer_scale_init_value '&larr' layer_scale_init_values[i],
-            res_scale_init_value '&larr' res_scale_init_values[i],
+        stage '&larr;' nn.Sequential(
+            *[MetaFormerBlock(dim '&larr;' dims[i],
+            token_mixer '&larr;' token_mixers[i],
+            mlp '&larr;' mlps[i],
+            norm_layer '&larr;' norm_layers[i],
+            drop_path '&larr;' dp_rates[i + j],
+            layer_scale_init_value '&larr;' layer_scale_init_values[i],
+            res_scale_init_value '&larr;' res_scale_init_values[i],
             ) for j in range(depths[i])]
         )
         self.stages.append(stage)
     
     # norm layer를 초기화
-    self.norm '&larr' output_norm(dims[-1])
+    self.norm '&larr;' output_norm(dims[-1])
     
     # head를 초기화
     if head_dropout > 0.0:
-        self.head '&larr' head_fn(dims[-1], num_classes, head_dropout '&larr' head_dropout)
+        self.head '&larr;' head_fn(dims[-1], num_classes, head_dropout '&larr' head_dropout)
     else:
-        self.head '&larr' head_fn(dims[-1], num_classes)
+        self.head '&larr;' head_fn(dims[-1], num_classes)
       
     # weights를 초기화
     init_weights()
@@ -115,19 +116,19 @@ ___Require: Arguments___
   **procedure** _init_weights_
     for m in self.modules():
         if isinstance(m, (nn.Conv2d, nn.Linear)):
-            trunc_normal_(m.weight, std=.02)
+            trunc_normal_(m.weight, std '&larr;' .02)
             if m.bias is not None:
                 nn.init.constant_(m.bias, 0)
                 
   **procedure** _forward_features_
     for i in range(self.num_stages):
-        x '&larr' self.downsample_layers[i](x)
-        x '&larr' self.stages[i](x)
+        x '&larr;' self.downsample_layers[i](x)
+        x '&larr;' self.stages[i](x)
     return self.norm(x.mean[1, 2]))
     
   **procedure** _forward_
-    x '&larr' self.forward_features(x)
-    x '&larr' self.head(x)
+    x '&larr;' self.forward_features(x)
+    x '&larr;' self.head(x)
     return x
 ***
 
