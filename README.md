@@ -129,6 +129,7 @@ ___Require: Arguments___
     x '&larr' self.forward_features(x)
     x '&larr' self.head(x)
     return x
+***
 
 ## Code details
 
