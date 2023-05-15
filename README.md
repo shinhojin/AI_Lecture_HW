@@ -75,9 +75,7 @@ ___Require: Arguments___
 **Procedure** _init_(Args) # Args는 위에 있는 파라미터입니다.
     
     # classes와 stages 값을 초기화
-    
     self.num_classes <- num_classes
-    
     self.num_stages <- len(depths)
     
     # downsample layers를 초기화
