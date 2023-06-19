@@ -4,6 +4,14 @@
 - 학번: 72210295
 - 학과: 컴퓨터학과
 
+## Evaulation (Final Report)
+
+ 수도 코드에서 최적화를 찾아내지 못해 여러 실험을 통해 얻을 결과를 표시하였습니다.
+
+ **Input_Size**: Transformer를 생성시에 사용되는 input size에 따른 차이를 확인하였습니다.
+
+ ![](https://drive.google.com/file/d/1hBpM3DnydWb2w55wzN2qyH01LyyW5tOx/view?usp=drive_link (Input size에 따른 예측 시간 및 정확도))
+
 ## Model Explanation
 
  **MetaFormer**는 기존 Transformer를 확장하고 성능 향상시키기 위해 메타학습에 기반한 딥러닝 모델입니다.
