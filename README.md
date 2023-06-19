@@ -10,7 +10,7 @@
 
  **Input_Size**: Transformer를 생성시에 사용되는 input size에 따른 차이를 확인하였습니다.
 
- ![](https://drive.google.com/file/d/1hBpM3DnydWb2w55wzN2qyH01LyyW5tOx/view?usp=sharing "Input size에 따른 예측 시간 및 정확도")
+ ![](./img/Input_size.png "Input size에 따른 예측 시간 및 정확도")
 
 ## Model Explanation
 
