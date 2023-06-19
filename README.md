@@ -6,7 +6,9 @@
 
 ## Evaulation (Final Report)
 
- 수도 코드에서 최적화를 찾아내지 못해 여러 실험을 통해 얻을 결과를 표시하였습니다.
+ 수도 코드에서 최적화를 찾아내지 못해 여러 실험을 통해 얻을 결과를 표시하였습니다. 
+ 
+ Validate 파일을 만들어 검증을 하고 싶었으나 코딩에서 오류가 많이 나오고 리눅스 환경이 조성이 되지 않아 완성하지 못하였습니다.
 
  **Input_Size**: Transformer를 생성시에 사용되는 input size에 따른 차이를 확인하였습니다.
 
@@ -28,9 +30,7 @@
 
  poolformerv2_m36으로 실험한 결과 True인 결과 "Egyptian Cat"을 보였으며, False인 결과는 "Power Drill"이라는 결과를 확인하였습니다.
 
- **drop_out**
-
-
+ **input image channel 수**, **분류를 위한 클래스 수**, **drop_path_rate**, **head_dropout** 파라미터 값도 수정해가며 실험해보았으나 예측 결과값에서 차이가 없었으며, 자세한 차이는 validate 파일을 구현하지 못해 확인하지 못했습니다.
 
 ## Model Explanation
 
