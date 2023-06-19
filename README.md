@@ -12,6 +12,12 @@
 
  ![](./img/Input_size.png "Input size에 따른 예측 시간 및 정확도")
 
+ ![](./img/32.png "Input size에 따른 예측 시간 및 정확도")
+
+ ![](./img/224.png "Input size에 따른 예측 시간 및 정확도")
+
+ ![](./img/512.png "Input size에 따른 예측 시간 및 정확도")
+
 ## Model Explanation
 
  **MetaFormer**는 기존 Transformer를 확장하고 성능 향상시키기 위해 메타학습에 기반한 딥러닝 모델입니다.
