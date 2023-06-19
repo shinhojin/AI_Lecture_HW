@@ -18,6 +18,20 @@
 
  ![](./img/512.png "Input size에 따른 예측 시간 및 정확도")
 
+ **Pretrained**: Pretrained의 값을 True, False로 변경했을 때 차이를 확인하였습니다.
+
+ Pretrained=True라면 transformer를 생성할 때에 대한 추가적인 시간(오버헤드)가 필요로 합니다. 즉, 미리 데이터를 학습할 데이터를 로드하는 시간을 말합니다.
+
+ 하지만, Pretrained=False라면 사전에 데이터를 학습하기 않기 때문에 transformer를 생성할 때 큰 시간이 필요로 하지 않습니다.
+
+ 최종적으로 True인 경우가 False인 경우보다 정확한 결과를 보이고 있었으며 False인 경우 예측하는 경우에 예측을 하는데 더 많은 시간을 소요하는 것을 확인했습니다.
+
+ poolformerv2_m36으로 실험한 결과 True인 결과 "Egyptian Cat"을 보였으며, False인 결과는 "Power Drill"이라는 결과를 확인하였습니다.
+
+ **drop_out**
+
+
+
 ## Model Explanation
 
  **MetaFormer**는 기존 Transformer를 확장하고 성능 향상시키기 위해 메타학습에 기반한 딥러닝 모델입니다.
